@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import useActiveSection from "./hooks/useActiveSection";
 import Sidebar from "./components/Sidebar/Sidebar";
+import Selection from "./components/Section/Section";
+import { Home, About, Skills, Projects, Contact} from "./pages"
 import "./App.css";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false); // desktop collapse
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("home");
   const [isMobile, setIsMobile] = useState(false);
+  const activeItem = useActiveSection(["home","about","skills","projects","contact"])
 
   
   // Detect screen size
@@ -24,33 +27,6 @@ function App() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // useEffect for activeitem change of sidebar
-  useEffect(() => {
-    const sectionIds = ["home", "about", "skills", "projects", "contact"];
-    const observers: IntersectionObserver[] =[];
-
-    sectionIds.forEach((id) => {
-      const section = document.getElementById(id);
-      if (!section) return ;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            setActiveItem(id);
-          }
-        },{
-          threshold: 0.5,
-        }
-      );
-      observer.observe(section);
-      observers.push(observer);
-    });
-    return() => {
-      observers.forEach((obs) => obs.disconnect());
-    };
-  }, []);
-
-  
 
   // Desktop only: auto collapse when scroll passes home
   useEffect(() => {
@@ -82,9 +58,9 @@ function App() {
     }
   };
 
-  const handleItemClick = (id: string) => {
+  const handleClick = (id: string) => {
     scrollToSection(id);
-    setActiveItem(id);
+    if (isMobile) setMobileSidebarOpen(false);
   }
 
 
@@ -96,7 +72,7 @@ function App() {
         isMobile={isMobile}
         mobileSidebarOpen={mobileSidebarOpen}
         activeItem={activeItem}
-        onItemClick={handleItemClick}
+        onItemClick={handleClick}
         toggleMobileSidebar={() => 
         setMobileSidebarOpen(!mobileSidebarOpen)}
         />
@@ -107,53 +83,25 @@ function App() {
           flex: 1,
           minWidth: 0,
           overflowY: "auto",
-          padding: "2rem",
           position: "relative"
         }}
       >
-        {isMobile && (
-          <button
-            className="hamburger"
-            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-            aria-label={mobileSidebarOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileSidebarOpen}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-        )}
-        <section
-          id="home"
-          style={{
-            height: "100vh",
-            paddingTop: "4rem",
-            textAlign: "left",        
-            maxWidth: "600px",        
-            margin: "0 auto"          
-          }}
-        >
-            <h1>Hello, i'm <br /><span style={{ color: "#7132CA", fontWeight: "bold" }}>Romeo</span> Shahaj</h1>
-            <p>
-              I am a <span style={{ color: "#7132CA", fontWeight: "bold" }}>Software Developer</span> Passionate About Building Scalable Web Apps,
-              Databases & End-to-End Solutions.
-            </p>
-          </section>
-        <section id="about" style={{ height: "100vh", paddingTop: "4rem" }}>
-          <h1>About me</h1>
-        </section>
+        <Selection id="home">
+          <Home />
+        </Selection>
+        <Selection id="about">
+          <About />
+        </Selection>
+        <Selection id="skills">
+          <Skills />
+        </Selection>
+        <Selection id="projects">
+          <Projects />
+        </Selection>
+        <Selection id="contact">
+          <Contact/>
+        </Selection>
 
-        <section id="skills" style={{ height: "100vh", paddingTop: "4rem" }}>
-          <h1>Skills</h1>
-        </section>
-
-        <section id="projects" style={{ height: "100vh", paddingTop: "4rem" }}>
-          <h1>Projects</h1>
-        </section>
-
-        <section id="contact" style={{ height: "100vh", paddingTop: "4rem" }}>
-          <h1>Contact</h1>
-        </section>
       </div>
       </div>
   );
