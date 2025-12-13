@@ -1,29 +1,43 @@
 import './About.css'
-import UniWALogo from "../../assets/images/timeline/UniWA.png"
-import Qubi from "../../assets/images/timeline/Qubi.png"
-import {useEffect} from "React"
+//import UniWALogo from "../../assets/images/timeline/UniWA.png"
+//import Qubi from "../../assets/images/timeline/Qubi.png"
+//import Kep from "../../assets/images/timeline/kep.png"
+//import Isec from "../../assets/images/timeline/isec.png"
+//import Thesis from "../../assets/images/timeline/thesis.png"
+//import Grad from "../../assets/images/timeline/grad.png"
+
+import {useEffect} from "react"
 
 export default function About() {
   
 useEffect(() => {
-    const bar = document.querySelector(".timeline_progress-bar");
-    const section = document.getElementById("about");
+  const bar = document.querySelector(".timeline_progress-bar") as HTMLElement;
+  const section = document.getElementById("about");
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.intersectionRatio > 0.65) {
-          bar?.classList.add("active");
-        } else {
-          bar?.classList.remove("active");
-        }
-      },
-      { threshold: 0.65}
+  if (!bar || !section) return;
+
+  const onScroll = () => {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const start = windowHeight * 0.2;
+    const end = rect.height - windowHeight * 0.3;
+
+    const progress = Math.min(
+      Math.max((start - rect.top) / end, 0),
+      1
     );
 
-    if (section) observer.observe(section);
+    bar.style.height = `${progress * 100}%`;
+    bar.style.opacity = progress > 0 ? "1" : "0";
+  };
 
-    return () => observer.disconnect();
-  }, []);
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
+
 
   return (
     <section
@@ -43,7 +57,7 @@ useEffect(() => {
           left: 0,
           width: "100%",
           height: "100%",
-          background: "linear-gradient(to bottom, #7132CA 100%, rgba(79, 0, 128, 0) 0%)",
+          background: "linear-gradient(to bottom, #402466 100%, rgba(79, 0, 128, 0) 0%)",
           zIndex: -1,
         }}
       />
@@ -66,41 +80,113 @@ useEffect(() => {
                   </div>
                   <div className="timeline_right">
                     <div className="margin-bottom-xlarge">
-                      <div className="timelin_text">
+                      <div className="timeline_text">
                         Entered University of West attica in the department of
                         Informatics and Computer Engineering.
                       </div>
                     </div>
-                    <div className="timeline_image-wrapper">
-                      <img src={UniWALogo} loading="lazy" width="480" alt="UniWA"/>
-                    </div>
+                    
                 </div>
+                </div>
+                <div className="timeline_item">
+                <div className="timeline_left">
+                  <div className="timeline_date-text">May 2023</div>
+                </div>
+                <div className="timeline_centre">
+                    <div className="timeline_circle"></div>
+                </div>
+                <div className="timeline_right">
+                      <div className="margin-bottom-xlarge">
+                        <div className="timeline_text">
+                          Started working at Qubiteq, as a junior Fullstack Devleoper.
+                          on a .Net Core,React,SQL Server Stack.
+                        </div>
+                      </div>
+                      
+                  </div>
               </div>
-            </div>
             <div className="timeline_item">
               <div className="timeline_left">
-                <div className="timeline_date-text">May 2023</div>
+                <div className="timeline_date-text">January 2024</div>
               </div>
               <div className="timeline_centre">
                   <div className="timeline_circle"></div>
               </div>
               <div className="timeline_right">
                     <div className="margin-bottom-xlarge">
-                      <div className="timelin_text">
-                        Started working at Qubiteq, as a junior Fullstack Devleoper.
-                        on a .Net Core,React,SQL Server Stack.
+                      <div className="timeline_text">
+                       Completed an end-to-end solution for a goverment service 
+                        as a contract developer. 
                       </div>
                     </div>
-                    <div className="timeline_image-wrapper">
-                      <img src={Qubi} loading="lazy" width="480" alt="Qubi"/>
-                    </div>
+                    
                 </div>
             </div>
+            <div className="timeline_item">
+              <div className="timeline_left">
+                <div className="timeline_date-text">August 2024</div>
+              </div>
+              <div className="timeline_centre">
+                  <div className="timeline_circle"></div>
+              </div>
+              <div className="timeline_right">
+                    <div className="margin-bottom-xlarge">
+                      <div className="timeline_text">
+                       I really appreciated my time at Qubiteq and learned a lot, 
+                       but after reaching a natural stopping point in my development,
+                       I accepted an exchange program in Portugal to continue growing. 
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div className="timeline_item">
+              <div className="timeline_left">
+                <div className="timeline_date-text">January 2025</div>
+              </div>
+              <div className="timeline_centre">
+                  <div className="timeline_circle"></div>
+              </div>
+              <div className="timeline_right">
+                    <div className="margin-bottom-xlarge">
+                      <div className="timeline_text">
+                       Returned and started my thesis on training an LLM as a legal tool
+                       on the Greek legal code(<a href="https://polynoe.lib.uniwa.gr/xmlui/handle/11400/10824"
+                       target="_blank" rel="noopener noreferrer"
+                       >Read my thesis here
+                       </a>). 
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div className="timeline_item">
+              <div className="timeline_left">
+                <div className="timeline_date-text">October 2025</div>
+              </div>
+              <div className="timeline_centre">
+                  <div className="timeline_circle"></div>
+              </div>
+              <div className="timeline_right">
+                    <div className="margin-bottom-xlarge">
+                      <div className="timeline_text">
+                        successfully completed my thesis and graduated, 
+                        I’m now ready to take the next step by pursuing 
+                        career opportunities in my field.
+                      </div>
+                    </div>
+                    {/*<div className="timeline_image-wrapper">
+                      <img src={Grad} loading="lazy" alt="Qubi"/>
+                    </div>
+                    */}
+                </div>
+            </div>
+          </div>
             <div className="overlay-fade-top"></div>
             <div className="overlay-fade-bot"></div>
           </div>
         </div>
-        <div style={{ height: "50vh" }}></div>
+        
 
         {/* ABOUT TEXT */}
         <div className="about-text">
@@ -108,8 +194,8 @@ useEffect(() => {
           <p>
             I am a 24 year old aspiring full-stack developer, currently based in Athens,
             Greece. I have always been curious and fascinated by puzzles, which led me to
-            the path of studying software engineering. I graduated in October 2025, and
-            worked as a junior developer for 1.5 years during my studies at «company».
+            the path of studying software engineering. I graduated in October 2025, while studying i
+            worked as a junior developer for 1.5 years at Qubiteq.
             I am currently looking to continue my professional journey in Norway, and hope
             to be a valuable asset to future employers.
           </p>
