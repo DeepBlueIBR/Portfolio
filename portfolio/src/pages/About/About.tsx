@@ -98,8 +98,8 @@ useEffect(() => {
                 <div className="timeline_right">
                       <div className="margin-bottom-xlarge">
                         <div className="timeline_text">
-                          Started working at Qubiteq, as a junior Fullstack Devleoper.
-                          on a .Net Core,React,SQL Server Stack.
+                          Joined Qubiteq as a Junior Full-Stack Developer, 
+                          working on projects using .NET Core, React, and SQL Server.
                         </div>
                       </div>
                       
