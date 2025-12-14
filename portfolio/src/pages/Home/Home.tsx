@@ -141,7 +141,7 @@ export default function Home() {
       )}
     </h1>
 
-  <p>
+  <p className="subText">
   I am a{" "}
   <span
     ref={subtleRef} // only this span gets the effect

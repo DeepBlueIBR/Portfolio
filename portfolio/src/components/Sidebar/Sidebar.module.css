@@ -35,7 +35,7 @@
 }
 
 .sidebar.mobile {
-    position: fixed;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -91,6 +91,7 @@
   display: block;
   width: 100%;             /* fill full sidebar width */
   box-sizing: border-box;
+  font-size: 18px;
 }
 
 .sidebarMenu li:hover {

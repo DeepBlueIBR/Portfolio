@@ -4,6 +4,11 @@
 .home-content p span {
   color: #7132CA;
   font-weight: bold;
+  font-size: 18px;
+}
+
+.subText {
+  font-size: 18px;
 }
 
 .prof-pic {

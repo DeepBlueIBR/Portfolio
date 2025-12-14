@@ -87,9 +87,9 @@ function App() {
         <Selection id="skills">
           <Skills />
         </Selection>
-        <Selection id="projects">
-          <Projects />
-        </Selection>
+        
+        <Projects />
+        
         <Selection id="contact">
           <Contact />
         </Selection>
