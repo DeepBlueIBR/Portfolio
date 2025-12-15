@@ -8,6 +8,29 @@
   font-size: 18px;
 }
 
+.wave-wrapper {
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+
+.wave-transition-bot {
+  display: block;
+  width: 100%;
+  height: auto;       /* maintain aspect ratio */
+  margin-top: -5px;   /* move slightly up to hide gap */
+  position: relative; /* optional */
+  z-index: 0;         /* behind content */
+  margin-bottom: -30px;
+}
+@media (min-width: 1800px) {
+  .wave-transition-bot {
+    margin-bottom: -120px;  /* or whatever value you want */
+  }
+}
+
 .carousel {
   position: relative;
   display: flex;
@@ -80,3 +103,18 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 .dot.active {
   background-color: #7132CA;
 }
+
+
+
+
+.wave-transition {
+  display: block;
+  width: 100%;
+  height: auto;       /* maintain aspect ratio */
+  margin-top: -5px;   /* move slightly up to hide gap */
+  position: relative; /* optional */
+  z-index: 0;         /* behind content */
+  margin-top: -20px;
+}
+
+

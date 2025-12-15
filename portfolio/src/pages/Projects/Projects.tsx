@@ -2,16 +2,20 @@ import { useState } from "react";
 import "./Projects.css"
 import kep from "../../assets/images/projects/tab.jpeg"
 import stockFinder from "../../assets/images/projects/fint.jpeg"
+import waveSVG from "../../assets/images/projects/layered-waves-haikei.svg";
+import waveSVGbot from "../../assets/images/projects/layered-waves-haikei-1.svg";
+
+
 
 const projectData = [
   {
     title: "E-queuing solution",
-    description: "Design and implemented an electronic queue management system using Python flask, React.js. In collaboration with another software engineer designing and builded both frontend and backend. For the government program \"Modernization of civil service center\" for the island of Ithaca. We had full autonomy in selecting and implementing the technology stack, as well as exploring ways to communicate with a thermal printer. It was benefitial in my ability to plan and execute a full-cycle software solution in a high-responsibility environment.",
+    description: "Designed and implemented an electronic queue management system using Python Flask and React.js. Collaborated with another software engineer to develop both the frontend and backend for the government program 'Modernization of Civil Service Centers' on the island of Ithaca. We had full autonomy in selecting and implementing the technology stack and explored methods for communicating with a thermal printer. This project enhanced my ability to plan and execute a full-cycle software solution in a high-responsibility environment.",
     imageUrl: kep,
   },
   {
     title: "Stock Portfolio",
-    description: "Personal project to track a stocks portfolio build using .Net and React",
+    description: "A personal stock portfolio tracking application built using .NET and React. A live demo will be available soon.",
     imageUrl: stockFinder,
   }
 ]
@@ -33,6 +37,9 @@ export default function Projects() {
 
   return (
     <section id="projects" className="projects-section">
+    <div className="wave-wrapper">
+      <img src={waveSVG} alt="wave" className="wave-transition" />
+    </div>
     <div className="page-content">
         <h1 className="page-heading">Projects</h1>
 
@@ -71,6 +78,11 @@ export default function Projects() {
           ))}
         </div>
       </div>
+     
+    <div className="wave-wrapper-bot">
+      <img src={waveSVGbot} alt="wave" className="wave-transition-bot" />
+    </div>
+
     </section>
   );
 }

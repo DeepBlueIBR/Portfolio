@@ -17,7 +17,7 @@ export default function Skills() {
       <div>
         <div className="core-stack">
           <p>
-            Technologies that I have worked with in a professional setting.
+            Technologies that I have worked with professionally.
           </p>
           <div className="icon-container">
             <div className="skill-pill">
@@ -42,7 +42,7 @@ export default function Skills() {
         </div>
         <div className="pers-stack">
           <p>
-            Technologies i have worked with on my own.
+            Technologies i have worked with privately.
           </p>
           <div className="icon-container">
             <div className="skill-pill">

@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react"
-import profileImg from "../../assets/images/profile-pic.svg"
-//import profileImg from "../../assets/images/prof.jpeg"
+//import profileImg from "../../assets/images/profile-pic.svg"
+import profileImg from "../../assets/images/prof.jpeg"
 import "./Home.css"
 
 

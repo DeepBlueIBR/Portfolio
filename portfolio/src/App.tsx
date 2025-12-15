@@ -81,12 +81,20 @@ function App() {
         <Selection id="home">
           <Home />
         </Selection>
-        <About />
+        <Selection id="about">
+          <About />
+        </Selection>
         <Selection id="skills">
           <Skills />
         </Selection>
-        <Projects />
-        <Contact />
+        <Selection id="projects">
+          <Projects />
+        </Selection>
+        <Selection id="contact">
+          <Contact />
+        </Selection>
+
+       
         
       </div>
     </div>
