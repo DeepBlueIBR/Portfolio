@@ -5,19 +5,28 @@ import KUTE from "kute.js";
 
 
 export default function Contact() {
-const blob1Ref = useRef<SVGPathElement>(null);
+  const blob1Ref = useRef<SVGPathElement>(null);
   const blob2Ref = useRef<SVGPathElement>(null);
+  const tweenRef = useRef<ReturnType<typeof KUTE.fromTo> | null>(null);
 
   useEffect(() => {
     if (blob1Ref.current && blob2Ref.current) {
-      const tween = KUTE.fromTo(
+      tweenRef.current = KUTE.fromTo(
         blob1Ref.current,
         { path: blob1Ref.current },
         { path: blob2Ref.current },
         { repeat: 999, duration: 3000, yoyo: true }
       );
-      tween.start();
+      tweenRef.current.start();
     }
+
+    // Cleanup function - fixes memory leak
+    return () => {
+      if (tweenRef.current) {
+        tweenRef.current.stop();
+        tweenRef.current = null;
+      }
+    };
   }, []);
 
   return (

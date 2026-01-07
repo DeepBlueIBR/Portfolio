@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react"
-import profileImg from "../../assets/images/prof.jpeg"
+import profileImg from "../../assets/images/prof.webp"
 import cvFile from "../../assets/files/CV_Romeo_Shahaj_01.pdf"
+import { throttle } from "../../utils/throttle"
 import "./Home.css"
 
-import { isValidElement } from "react" // Added MouseEvent, ReactElement, HTMLProps
+import { isValidElement } from "react"
 import type { ReactNode, ReactElement, HTMLProps, MouseEvent } from "react"
 
 const FONT_WEIGHTS = {
@@ -60,9 +61,11 @@ const setupTextHover = (container: HTMLElement | null, type: FontType) => {
   if (!container) return () => { };
 
   const letters = container.querySelectorAll("span");
-  const { min, max, default: base } = FONT_WEIGHTS[type]; 
+  const { min, max, default: base } = FONT_WEIGHTS[type];
 
   const animateLetter = (letter: Element, weight: number, duration = 0.25) => {
+    // Kill any existing tween on this letter before creating a new one
+    gsap.killTweensOf(letter);
     return gsap.to(letter, {
       duration,
       ease: 'power2.out',
@@ -70,7 +73,8 @@ const setupTextHover = (container: HTMLElement | null, type: FontType) => {
     });
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  // Throttle mousemove to 16ms (~60fps) for better performance
+  const handleMouseMove = throttle((e: MouseEvent) => {
     const { left } = container.getBoundingClientRect();
     const mouseX = e.clientX - left;
 
@@ -81,15 +85,20 @@ const setupTextHover = (container: HTMLElement | null, type: FontType) => {
 
       animateLetter(letter, min + (max - min) * intensity);
     });
-  }
+  }, 16);
 
-  const handleMouseLeave = () =>
-    letters.forEach((letter: Element) => animateLetter(letter, base, 0.5))
+  const handleMouseLeave = () => {
+    // Kill all existing tweens on letters before resetting
+    gsap.killTweensOf(letters);
+    letters.forEach((letter: Element) => animateLetter(letter, base, 0.5));
+  };
 
   container.addEventListener("mousemove", handleMouseMove as unknown as EventListener);
   container.addEventListener("mouseleave", handleMouseLeave as unknown as EventListener);
 
   return () => {
+    // Cleanup: kill all tweens and remove listeners
+    gsap.killTweensOf(letters);
     container.removeEventListener("mousemove", handleMouseMove as unknown as EventListener);
     container.removeEventListener("mouseleave", handleMouseLeave as unknown as EventListener);
   };

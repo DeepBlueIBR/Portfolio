@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Projects.css"
-import kep from "../../assets/images/projects/tab.jpeg"
-import stockFinder from "../../assets/images/projects/fint.png"
+import kep from "../../assets/images/projects/tab.webp"
+import stockFinder from "../../assets/images/projects/fint.webp"
 import waveSVG from "../../assets/images/projects/layered-waves-haikei.svg";
 import waveSVGbot from "../../assets/images/projects/layered-waves-haikei-1.svg";
 
@@ -55,7 +55,7 @@ export default function Projects() {
             >
               {projectData.map((project, index) => (
                 <div className="carousel-slide" key={index}>
-                  <img src={project.imageUrl} alt={project.title} />
+                  <img src={project.imageUrl} alt={project.title} loading="lazy" />
                   <h2>{project.title}</h2>
                   <p>{project.description}</p>
                 </div>

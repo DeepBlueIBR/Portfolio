@@ -1,14 +1,14 @@
 import "./Skills.css"
-import dotnetLogo from "../../assets/images/skills/dotnet.png"
-import reactLogo from "../../assets/images/skills/react.png"
-import sqlLogo from "../../assets/images/skills/sql.png"
-import gitLogo from "../../assets/images/skills/git.png"
-import azureLogo from "../../assets/images/skills/azure.png"
-import pythonLogo from "../../assets/images/skills/python.png"
-import rustLogo from "../../assets/images/skills/rustLogo.png"
-import typescriptLogo from "../../assets/images/skills/typescriptlogo.png"
-import tailwindLogo from "../../assets/images/skills/tailwindlogo.png"
-import postgreSqlLogo from "../../assets/images/skills/postgreLogo.png"
+import dotnetLogo from "../../assets/images/skills/dotnet.webp"
+import reactLogo from "../../assets/images/skills/react.webp"
+import sqlLogo from "../../assets/images/skills/sql.webp"
+import gitLogo from "../../assets/images/skills/git.webp"
+import azureLogo from "../../assets/images/skills/azure.webp"
+import pythonLogo from "../../assets/images/skills/python.webp"
+import rustLogo from "../../assets/images/skills/rustLogo.webp"
+import typescriptLogo from "../../assets/images/skills/typescriptlogo.webp"
+import tailwindLogo from "../../assets/images/skills/tailwindlogo.webp"
+import postgreSqlLogo from "../../assets/images/skills/postgreLogo.webp"
 
 export default function Skills() {
   return (
@@ -21,22 +21,22 @@ export default function Skills() {
           </p>
           <div className="icon-container">
             <div className="skill-pill">
-              <img src={dotnetLogo} alt=".NET" />
+              <img src={dotnetLogo} alt=".NET" loading="lazy" />
             </div>
              <div className="skill-pill">
-              <img src={reactLogo} alt="React" />
+              <img src={reactLogo} alt="React" loading="lazy" />
             </div>
              <div className="skill-pill">
-              <img src={pythonLogo} alt="Python" />
+              <img src={pythonLogo} alt="Python" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={sqlLogo} alt="SQL Server" />
+              <img src={sqlLogo} alt="SQL Server" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={gitLogo} alt="Git" />
+              <img src={gitLogo} alt="Git" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={azureLogo} alt="Azure-pipeline" />
+              <img src={azureLogo} alt="Azure-pipeline" loading="lazy" />
             </div>
           </div>
         </div>
@@ -46,16 +46,16 @@ export default function Skills() {
           </p>
           <div className="icon-container">
             <div className="skill-pill">
-              <img src={rustLogo} alt="Rust" />
+              <img src={rustLogo} alt="Rust" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={typescriptLogo} alt="Typescript" />
+              <img src={typescriptLogo} alt="Typescript" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={postgreSqlLogo} alt="Postgre" />
+              <img src={postgreSqlLogo} alt="Postgre" loading="lazy" />
             </div>
             <div className="skill-pill">
-              <img src={tailwindLogo} alt="Tailwind" />
+              <img src={tailwindLogo} alt="Tailwind" loading="lazy" />
             </div>
           </div>
         </div>
